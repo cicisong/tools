@@ -1,17 +1,23 @@
 #!/bin/bash
 
-# TESTF="/home/ceci/Bureau/archiPoC/*"
-# REPO=$1
-for ref in /home/ceci/Bureau/archiPoC/*
-do
+fDiffFiles()
+{
   for file in /home/ceci/Bureau/test/*
   do
-    echo "++++++++++++++++++++++++++++++++++++++++++++++++++++"
-    echo $(basename $file)
-    echo ">"
-    diff $ref $file| grep ">"| wc 
-    echo "<"
-    diff $ref $file| grep "<"| wc 
-    echo "++++++++++++++++++++++++++++++++++++++++++++++++++++"
+    for ref in /home/ceci/Bureau/archiPoC/*
+    do
+      echo "++++++++++++++++++++++++++++++++++++++++++++++++++++"
+      echo $(basename $ref) $(basename $file)
+      echo ">"
+      diff $ref $file| grep ">"| wc 
+      echo "<"
+      diff $ref $file| grep "<"| wc 
+      echo "++++++++++++++++++++++++++++++++++++++++++++++++++++"
+    done
   done
-done
+}
+
+#fDiffFiles
+fDiffFiles | grep -A 2 -B 2 " 0" >/home/ceci/Bureau/sortie.txt
+
+
