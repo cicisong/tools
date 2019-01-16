@@ -23,4 +23,4 @@ while line:
         miniName = name
         mini = somme 
 
-print ("\n" + "The smaller is: " + miniName + " " + str(mini))
+file_out.write("\n" + "The smaller is: " + miniName + " " + str(mini))
